@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - SHOR10_PASSWORD=${SHOR10_PASSWORD:-}
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY:-}
+    volumes:
+      - ./data:/data

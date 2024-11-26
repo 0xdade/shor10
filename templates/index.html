@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Shorten URL</h1>
+<form method="POST">
+    <input class="au-input" type="text" name="long_url" placeholder="Enter long URL" required>
+    <input class="au-input" type="text" name="short_id" placeholder="[Optional] Enter a short ID">
+    <button class="au-button" type="submit">Shorten</button>
+</form>
+<br>
+<a href="{{ url_for('dashboard') }}">View Stats</a>
+{% endblock %}

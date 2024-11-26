@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .content-container {
+        max-width: 1200px;
+        min-height: 90vh;
+        height: 100%;
+    }
+
+    .term-overlay {
+        display: none;
+    }
+
+    .crt {
+        animation: none;
+    }
+</style>
+<h1>Dashboard</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Short URL</th>
+            <th>Long URL</th>
+            <th>Click Count</th>
+            <th>Created At</th>
+            <th>Last Visited</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for short_id, url_info in urls.items() %}
+        <tr>
+            <td><a href="/{{short_id}}" target="_blank">{{short_id}}</a></td>
+            <td><a href="{{url_info['long_url']}}" target="_blank">{{url_info['long_url']}}</a></td>
+            <td>{{url_info['click_count']}}</td>
+            <td>{{url_info['created_at']}}</td>
+            <td>{{url_info['last_visited'] or 'N/A'}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="/">Shorten a new URL</a>
+{% endblock %}
